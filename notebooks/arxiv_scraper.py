@@ -1,40 +1,39 @@
 """
 A python program to retreive recrods from ArXiv.org in given
 categories and specific date range.
-Author: Jason Robinson (robinsonjason761@gmail.com).
 """
 from __future__ import print_function
-import xml.etree.ElementTree as ET
+import xml.etree.ElementTree as ET # xml.etree.ElementTree is a module that can parse XML files.
 import datetime
 import time
 import sys
 PYTHON3 = sys.version_info[0] == 3
 if PYTHON3:
-    from urllib.parse import urlencode
-    from urllib.request import urlopen
-    from urllib.error import HTTPError
+    from urllib.parse import urlencode # urlencode is a function that encodes a dictionary into a URL query string.
+    from urllib.request import urlopen # urlopen is a function that opens a URL and returns a file-like object.
+    from urllib.error import HTTPError # HTTPError is a subclass of OSError that indicates HTTP protocol errors.
 else:
-    from urllib import urlencode
-    from urllib2 import HTTPError, urlopen
-OAI = '{http://www.openarchives.org/OAI/2.0/}'
-ARXIV = '{http://arxiv.org/OAI/arXiv/}'
-BASE = 'http://export.arxiv.org/oai2?verb=ListRecords&'
+    from urllib import urlencode # urlencode is a function that encodes a dictionary into a URL query string.
+    from urllib2 import HTTPError, urlopen # urlopen is a function that opens a URL and returns a file-like object.
+OAI = '{http://www.openarchives.org/OAI/2.0/}' # OAI is a namespace for the OAI-PMH protocol.
+ARXIV = '{http://arxiv.org/OAI/arXiv/}' # ARXIV is a namespace for the ArXiv OAI-PMH protocol.
+BASE = 'http://export.arxiv.org/oai2?verb=ListRecords&' # BASE is the base URL for the OAI-PMH protocol.
 
-class Record(object):
+class Record(object): # Record is a class that represents a single OAI-PMH record.
     """
     A class to hold a single record from ArXiv
     Each records contains the following properties:
     object should be of xml.etree.ElementTree.Element.
     """
 
-    def __init__(self, xml_record):
+    def __init__(self, xml_record): 
         """if not isinstance(object,ET.Element):
         raise TypeError("")"""
-        self.xml = xml_record
-        self.id = self._get_text(ARXIV, 'id')
+        self.xml = xml_record  
+        self.id = self._get_text(ARXIV, 'id') 
         self.url = 'https://arxiv.org/abs/' + self.id
         self.title = self._get_text(ARXIV, 'title')
-        self.abstract = self._get_text(ARXIV, 'abstract')
+        self.abstract = self._get_text(ARXIV, 'abstract') 
         self.cats = self._get_text(ARXIV, 'categories')
         self.created = self._get_text(ARXIV, 'created')
         self.updated = self._get_text(ARXIV, 'updated')
