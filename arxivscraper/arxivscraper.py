@@ -112,16 +112,16 @@ class Scraper(object):
             self.keys = filters.keys()
 
     def scrape(self):
-        t0 = time.time()
+        t0 = time.time() 
         url = self.url
         print(url)
-        ds = []
+        ds = [] 
         k = 1
-        while True:
-            print('fetching up to ', 1000 * k, 'records...')
+        while True: 
+            print('fetching up to ', 1000 * k, 'records...') 
             try:
-                response = urlopen(url)
-            except HTTPError as e:
+                response = urlopen(url) 
+            except HTTPError as e: #
                 if e.code == 503:
                     to = int(e.hdrs.get('retry-after', 30))
                     print('Got 503. Retrying after {0:d} seconds.'.format(self.t))
