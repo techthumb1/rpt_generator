@@ -16,7 +16,7 @@ To use these interactive docs:
 """
 
 app = FastAPI(
-    title='DS API',
+    title='RPT Generator',
     description=description,
     docs_url='/',
 )
