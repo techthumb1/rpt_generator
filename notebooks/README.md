@@ -1,0 +1,70 @@
+# arXivScraper
+***
+An ArXiV scraper to retrieve records from given categories and date range.
+
+## Installation
+***
+Use [pip] or [pip3] to install the package:
+> pip install arxivscraper
+or download the source code and run setup.py:
+> python setup.py install
+To update the module using pip:
+> pip install --upgrade arxivscraper
+
+## Usage
+***
+To use the package, import the module and create a scraper object:
+> from arxivscraper import Scraper
+> scraper = Scraper()
+
+## Configuration
+***
+The scraper object can be configured using the following methods:
+> scraper.set_categories(categories)
+> scraper.set_start_date(start_date)
+> scraper.set_end_date(end_date)
+> scraper.set_max_results(max_results)
+> scraper.set_sort_by(sort_by)
+> scraper.set_order(order)
+> scraper.set_include_pdf(include_pdf)
+> scraper.set_include_abstract(include_abstract)
+> scraper.set_include_comments(include_comments)
+> scraper.set_include_arxiv_url(include_arxiv_url)
+> scraper.set_include_doi(include_doi)
+> scraper.set_include_bibtex(include_bibtex)
+> scraper.set_include_body_text(include_body_text)
+> scraper.set_include_subjects(include_subjects)
+> scraper.set_include_authors(include_authors)
+> scraper.set_include_categories(include_categories)
+
+
+## Examples
+***
+The following examples show how to use the scraper object to retrieve records.
+> scraper.get_records(categories=['cs.AI'], start_date='2019-01-01', end_date='2019-01-31')
+> scraper.get_records(categories=['cs.AI'], start_date='2019-01-01', end_date='2019-01-31', max_results=10)
+> scraper.get_records(categories=['cs.AI'], start_date='2019-01-01', end_date='2019-01-31', sort_by='lastUpdatedDate', order='descending')
+> scraper.get_records(categories=['cs.AI'], start_date='2019-01-01', end_date='2019-01-31', sort_by='lastUpdatedDate', order='descending', include_pdf=True, include_abstract=True, include_comments=True, include_arxiv_url=True, include_doi=True, include_bibtex=True, include_body_text=True, include_subjects=True, include_authors=True, include_categories=True)
+
+
+## Without Filtering
+You can create use [arxivscraper] in your scripts. Import [arxivscraper] and create a scraper to fetch all records:
+***
+The following examples show how to use the scraper object to retrieve records without filtering. This is useful if you want to retrieve all records from a given category. The results are sorted by date and the first 10 records are returned.
+> scraper.get_records(categories=['cs.AI'])
+> scraper.get_records(categories=['cs.AI'], max_results=10)
+> scraper.get_records(categories=['cs.AI'], sort_by='lastUpdatedDate', order='descending')
+> scraper.get_records(categories=['cs.AI'], sort_by='lastUpdatedDate', order='descending', include_pdf=True, include_abstract=True, include_comments=True, include_arxiv_url=True, include_doi=True, include_bibtex=True, include_body_text=True, include_subjects=True, include_authors=True, include_categories=True)
+
+
+## License
+***
+This package is licensed under the [MIT license] and is provided as is.
+
+
+## Authors
+***
+- [Jason Robinson](
+    Data Science and Machine Learning Group,
+    [Columbia College of Engineering](https://www.ccoe.columbia.edu/)
+
